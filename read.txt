@@ -1,0 +1,97 @@
+简要描述:
+获取互联互通数据。
+说明:
+计算股本为流通A股
+请求URL:
+https://open.lixinger.com/api/cn/company/hot/mm_ha
+请求方式:
+POST
+参数:
+参数名称	必选	数据类型	说明
+token	Yes	String	我的Token页有用户专属且唯一的Token。
+stockCodes	Yes	Array	股票代码数组。 stockCodes长度>=1且<=100，格式如下：["300750","600519"]。
+请参考股票信息API获取合法的stockCode。
+返回数据说明:
+参数名称	数据类型	说明
+mm_sh	Number	持股数量
+mm_sh_cap_r	Number	持股占比
+mm_sha	Number	持股金额
+spc	Number	股价涨跌幅
+mm_shc_v_r	Number	过去1个交易日持仓变化占成交量比例
+mm_sh_cap_rc_d1	Number	过去1个交易日持仓占股本变化比例
+mm_sh_cap_rc_d5	Number	过去5个交易日持仓占股本变化比例
+mm_sh_cap_rc_d20	Number	过去20个交易日持仓占股本变化比例
+mm_sh_cap_rc_d60	Number	过去60个交易日持仓占股本变化比例
+mm_sh_cap_rc_d120	Number	过去120个交易日持仓占股本变化比例
+mm_sh_nba_d1	Number	过去1个交易日净买入额
+mm_sh_nba_d5	Number	过去5个交易日净买入额
+mm_sh_nba_d20	Number	过去20个交易日净买入额
+mm_sh_nba_d60	Number	过去60个交易日净买入额
+mm_sh_nba_d120	Number	过去120个交易日净买入额
+last_update_date	Date	最近更新时间
+
+{
+	"token": "9e26414e-481d-468b-98fe-f765dea84fc0",
+	"stockCodes": [
+		"300750",
+		"600519"
+	]
+}
+
+
+
+股票信息API 
+简要描述:
+获取股票详细信息。
+请求URL:
+https://open.lixinger.com/api/cn/company
+请求方式:
+POST
+参数:
+参数名称	必选	数据类型	说明
+token	Yes	String	我的Token页有用户专属且唯一的Token。
+fsType	No	String	财报类型，比如，'bank'。
+当前支持:
+非金融: non_financial
+银行: bank
+保险: insurance
+证券: security
+其他金融: other_financial
+mutualMarkets	No	Array	互联互通类型，比如：'[ha]'。
+当前支持:
+陆股通: ha
+stockCodes	No	Array	股票代码数组。 默认值为所有股票代码。格式如下：["300750","600519"]。
+请参考股票信息API获取合法的stockCode。
+includeDelisted	No	Boolean	是否包含退市股。 默认值是false。
+返回数据说明:
+参数名称	数据类型	说明
+name	String	公司名称
+stockCode	String	代码
+areaCode	String	地区代码
+market	String	市场
+fsType	String	财报类型
+mutualMarkets	String	互联互通
+ipoDate	Date	上市时间
+delistedDate	Date	退市时间
+API试用 (剩余访问次数): 9977
+
+https://open.lixinger.com/api/cn/company/fundamental/non_financial
+股票收益率 :ey
+股息率 :dyr
+股价 :sp
+股价涨跌幅 :spc
+成交量 :tv
+成交金额 :ta
+换手率 :to_r
+前复权 :fc_rights
+后复权 :bc_rights
+理杏仁前复权 :lxr_fc_rights
+股东人数 :shn
+市值 :mc
+流通市值 :cmc
+自由流通市值 :ecmc
+人均自由流通市值 :ecmc_psh
+融资余额 :fb
+融券余额 :sb
+陆股通持仓股数 :ha_sh
+陆股通持仓金额 :ha_shm
